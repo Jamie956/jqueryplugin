@@ -1,4 +1,4 @@
-<!-- 多选 -->
+<!-- awesome single -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -10,7 +10,7 @@
   }
 </style>
 
-<select class="myselect" multiple="multiple" />
+<select class="myselect" />
 
 <script>
   $(function () {
@@ -30,19 +30,22 @@
       id: 4,
       text: 'wontfix'
     }];
-    $('.myselect').select2({
+
+    function formatData(data) {
+      return `* ${data.text}`;
+    }
+    function formatDataSelection(data) {
+      // var $text = $(`Selected: ${data.text}`);
+      return `Selected: ${data.text}`;
+    };
+
+    $(".myselect").select2({
       data: data,//载入数据
+      templateResult: formatData,//定义选项中的item的格式
+      selectOnClose: true,//关闭dropdown时，是否选择高亮的item
       closeOnSelect: false,//选择item后，是否关闭dropdown
-      maximumSelectionLength: 4,//item选择上限
-      // placeholder: 'Select an item',
-      allowClear: true,//是否显示清除所有选项操作
+      templateSelection: formatDataSelection,//定义选中的item的格式
       tags: true,//是否允许搜索框创建item
-      tokenSeparators: [',', ' '],//items格式
-      placeholder: {
-        id: '-1', // the value of the option
-        text: 'Select an option'
-      },
-      
-    });
+    })
   })
 </script>
