@@ -10,20 +10,19 @@
   }
 </style>
 
-<select class="myselect" name="state">
-  <option value="AL">Alabama</option>
+<select class="myselect">
+  <!-- <option value="AL">Alabama</option>
   <option value="WY">Wyoming</option>
   <optgroup label="Fruit">
     <option>Apple</option>
     <option>Pear</option>
     <option>Peach</option>
-  </optgroup>
+  </optgroup> -->
 </select>
 
 <script>
   $(document).ready(function () {
     $('.myselect').select2({
-      placeholder: 'Select an option',
       ajax: {
         url: 'https://api.github.com/search/repositories',
         url: function (params) {
@@ -51,11 +50,7 @@
           request.on('failure', failure);
         },
       },
-      tags: "true",
-      placeholder: "Select an option",
-      allowClear: true,
       width: 'resolve',
-      theme: "classic",
     });
 
     // $(".myselect").prop("disabled", true);//readonly
