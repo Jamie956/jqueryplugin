@@ -10,7 +10,7 @@
   }
 </style>
 
-<select class="myselect" multiple="multiple" />
+<select class="myselect"/>
 
 <script>
   $(function () {
@@ -38,11 +38,7 @@
       allowClear: true,//是否允许清除所有已选items
       tags: true,//是否允许搜索框创建item
       tokenSeparators: [',', ' '],//items格式
-      // placeholder: {
-      //   id: '-1', // the value of the option
-      //   text: 'Select an option'
-      // },
-      
+      multiple: true,//是否多选
     });
   })
 </script>
