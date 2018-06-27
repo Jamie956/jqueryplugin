@@ -25,9 +25,9 @@
     $('.myselect').select2({
       ajax: {
         url: 'https://api.github.com/search/repositories',
-        url: function (params) {
-          return '/some/url/' + params.term;
-        },
+        // url: function (params) {
+        //   return '/some/url/' + params.term;
+        // },
         dataType: 'json',
         cache: false,
         data: function (params) {
