@@ -44,7 +44,8 @@
       return `Selected: ${data.text}`;
     };
 
-    $(".myselect").select2({
+    var $myselect = $(".myselect");
+    $myselect.select2({
       data: data,//载入数据
       templateResult: formatData,//定义选项中的item的格式
       selectOnClose: true,//关闭dropdown时，是否选择高亮的item
@@ -57,5 +58,31 @@
 
     // $(".myselect").prop("disabled", true);//disable select
     // $(".myselect").prop("disabled", false);//enable select
+
+    //选中item触发
+    // $myselect.on('select2:select', function (e) {
+    //   var data = e.params.data;
+    //   console.log('select')
+    //   console.log(data)
+    // });
+    //打开dropdown触发
+    // $myselect.on("select2:open", function (e) {
+    //   console.log('open')
+    //   console.log(e)
+    // });
+    //关闭dropdown触发
+    // $myselect.on("select2:close", function (e) {
+    //   console.log('close')
+    //   console.log(e)
+    // });
+    $myselect.on("select2:unselect", function (e) {
+      console.log('unselect')
+      console.log(e)
+    });
+    //选项发生改变触发
+    $myselect.on("change", function (e) {
+      console.log('change')
+      console.log(e)
+    });
   })
 </script>
