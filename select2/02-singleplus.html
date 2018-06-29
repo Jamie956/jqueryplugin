@@ -8,11 +8,11 @@
   .myselect {
     width: 50%;
   }
-
-  /* .select2-container .select2-selection--single {
+  
+  .select2-container .select2-selection--single {
     height: 34px;
     line-height: 34px;
-  } */
+  }
 </style>
 
 <select class="myselect"></select>
@@ -41,22 +41,19 @@
       text: 'wontfix'
     }];
 
-    function formatData(data) {
-      return `* ${data.text}`;
-    }
-    function formatDataSelection(data) {
-      return `Selected: ${data.text}`;
-    };
-
     var $myselect = $(".myselect");
     $myselect.select2({
       data: data,//载入数据
-      templateResult: formatData,//定义选项中的item的格式
       selectOnClose: true,//关闭dropdown时，是否选择高亮的item
       closeOnSelect: true,//选择item后，是否关闭dropdown
-      templateSelection: formatDataSelection,//定义选中的item的格式
+      templateResult: function (data) {//定义选项中的item的格式
+        return `* ${data.text}`;
+      },
+      templateSelection: function (data) {//定义选中的item的格式
+        return `Selected: ${data.text}`;
+      },
       tags: true,//是否允许搜索框创建item
-      // theme: "classic",//使用经典主题
+      // theme: "classic",//使用旧版主题
       width: 'resolve',//need to override the changed default 不是很懂
     })
 
@@ -101,7 +98,8 @@
     })
 
     $('#clearSelect').click(function () {
-      $myselect.val(null).trigger("change");
+      $myselect.val(null).trigger("change");//清空选中item
     })
+
   })
 </script>

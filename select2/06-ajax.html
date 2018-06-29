@@ -19,21 +19,36 @@
         url: "https://api.github.com/search/repositories",
         dataType: 'json',
         delay: 250,
+        cache: true,
         //定义参数  q:参数名， params.term:输入框的内容
         data: function (params) {
           console.log('call data: ', params);
+          // return {
+          //   q: params.term,
+          // };
+
+          //分页
           return {
             q: params.term,
+            page: params.page
           };
         },
         //预处理返回结果  data:返回数据
-        processResults: function (data) {
+        processResults: function (data, params) {
           console.log('call processResults: ', data)
+          // return {
+          //   results: data.items
+          // };
+
+          //分页
+          params.page = params.page || 1;
           return {
-            results: data.items
+            results: data.items,
+            pagination: {
+              more: (params.page * 30) < data.total_count
+            }
           };
         },
-        cache: true
       },
       escapeMarkup: function (markup) { return markup; },//字符转义处理
       minimumInputLength: 1,//最小需要输入多少个字符才进行查询

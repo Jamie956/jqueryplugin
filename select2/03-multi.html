@@ -32,6 +32,7 @@
       id: 4,
       text: 'wontfix'
     }];
+
     var $myselect = $('.myselect');
     $myselect.select2({
       data: data,//载入数据
@@ -48,5 +49,10 @@
       var selectedData = $myselect.select2("data"); //获取选中的items, 多选
       console.log(selectedData)
     })
+
+    //初始化
+    // $myselect.append(new Option("Jquery", 10001, false, true));
+    //或者
+    $myselect.append("<option value='10001'>Jquery</option>");
   })
 </script>
