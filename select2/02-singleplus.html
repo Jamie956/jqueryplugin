@@ -18,6 +18,9 @@
 <select class="myselect"></select>
 <br>
 <button id="getSelected">Get!</button>
+<button id="disableSelect">Disable</button>
+<button id="enableSelect">Enable</button>
+<button id="clearSelect">Clear</button>
 
 <script>
   $(function () {
@@ -42,7 +45,6 @@
       return `* ${data.text}`;
     }
     function formatDataSelection(data) {
-      // var $text = $(`Selected: ${data.text}`);
       return `Selected: ${data.text}`;
     };
 
@@ -58,8 +60,13 @@
       width: 'resolve',//need to override the changed default 不是很懂
     })
 
-    // $(".myselect").prop("disabled", true);//disable select
-    // $(".myselect").prop("disabled", false);//enable select
+    $('#disableSelect').click(function () {
+      $myselect.prop("disabled", true);//disable select
+    })
+
+    $('#enableSelect').click(function () {
+      $myselect.prop("disabled", false);//enable select
+    })
 
     //选中item触发
     // $myselect.on('select2:select', function (e) {
@@ -91,6 +98,10 @@
     $('#getSelected').click(function () {
       var selectedData = $myselect.select2("data")[0]; //获取选中的item, 单选
       console.log(selectedData)
+    })
+
+    $('#clearSelect').click(function () {
+      $myselect.val(null).trigger("change");
     })
   })
 </script>
