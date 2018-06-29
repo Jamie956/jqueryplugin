@@ -10,7 +10,9 @@
   }
 </style>
 
-<select class="myselect"/>
+<select class="myselect"></select>
+<br>
+<button id="getSelected">Get!</button>
 
 <script>
   $(function () {
@@ -30,7 +32,8 @@
       id: 4,
       text: 'wontfix'
     }];
-    $('.myselect').select2({
+    var $myselect = $('.myselect');
+    $myselect.select2({
       data: data,//载入数据
       closeOnSelect: false,//选择item后，是否关闭dropdown
       maximumSelectionLength: 4,//item选择上限
@@ -40,5 +43,10 @@
       tokenSeparators: [',', ' '],//items格式
       multiple: true,//是否多选
     });
+
+    $('#getSelected').click(function () {
+      var selectedData = $myselect.select2("data"); //获取选中的items, 多选
+      console.log(selectedData)
+    })
   })
 </script>

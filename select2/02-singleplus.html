@@ -15,7 +15,9 @@
   } */
 </style>
 
-<select class="myselect" />
+<select class="myselect"></select>
+<br>
+<button id="getSelected">Get!</button>
 
 <script>
   $(function () {
@@ -75,14 +77,20 @@
     //   console.log('close')
     //   console.log(e)
     // });
-    $myselect.on("select2:unselect", function (e) {
-      console.log('unselect')
-      console.log(e)
-    });
+    // 取消选择触发
+    // $myselect.on("select2:unselect", function (e) {
+    //   console.log('unselect')
+    //   console.log(e)
+    // });
     //选项发生改变触发
-    $myselect.on("change", function (e) {
-      console.log('change')
-      console.log(e)
-    });
+    // $myselect.on("change", function (e) {
+    //   console.log('change')
+    //   console.log(e)
+    // });
+
+    $('#getSelected').click(function () {
+      var selectedData = $myselect.select2("data")[0]; //获取选中的item, 单选
+      console.log(selectedData)
+    })
   })
 </script>
