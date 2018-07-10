@@ -25,38 +25,38 @@
 		"type": "serial",
 		"theme": "light",
 		"dataDateFormat": "YYYY-MM-DD",
-		//Y left
+		//y轴
 		"valueAxes": [{
-			"id": "y_total",
+			"id": "y_total",//给数据图绑定
 			"title": "Total",
-			"position": "left",
+			"position": "left",//左边y轴
 			"autoGridCount": false,
 			"labelFunction": function (value) {
-				return "$" + Math.round(value);
+				return "$" + Math.round(value);//小于0时，需要处理保留小数
 			}
-		}, {//Y right
+		}, {
 			"id": "y_count",
 			"title": "Count",
 			"gridAlpha": 0,
-			"position": "right",
+			"position": "right",//右边y轴
 			"autoGridCount": false,
 		}],
-		//bar total
+		//图
 		"graphs": [{
 			"id": "bar_total",
-			"valueAxis": "y_total",
-			"lineColor": "#62cf73",
-			"fillColors": "#62cf73",
+			"valueAxis": "y_total",//指定哪个y轴
+			"lineColor": "#62cf73",//柱状边框颜色
+			"fillColors": "#62cf73",//柱状填充颜色
 			"fillAlphas": 1,
-			"type": "column",
+			"type": "column",//柱状图
 			"title": "Total",
-			"valueField": "total",
+			"valueField": "total",//对应载入数据的key
 			"clustered": false,
-			"columnWidth": 0.3,
+			"columnWidth": 0.2,//柱子有多粗
 			"legendValueText": "[[]]",
-			"balloonText": "[[title]]<br /><b style='font-size: 130%'>$[[value]]</b>",
-			"precision": 2
-		}, {//line count
+			"balloonText": "[[title]]<br /><b style='font-size: 130%'>$[[value]]</b>",//hover在柱子上的气泡
+			"precision": 2,//气泡显示小数保留位数
+		}, {
 			"id": "line_count",
 			"valueAxis": "y_count",
 			"bullet": "round",
@@ -65,9 +65,9 @@
 			"bulletSize": 5,
 			"hideBulletsCount": 50,
 			"lineThickness": 2,
-			"lineColor": "#20acd4",
-			//		    "type": "smoothedLine",
-			"type": "line",
+			"lineColor": "#20acd3",//线条颜色
+					    // "type": "smoothedLine",
+			"type": "line",//线图
 			"title": "Count",
 			"useLineColorForBulletBorder": true,
 			"valueField": "count",
@@ -114,12 +114,12 @@
 		"dataProvider":
 			[{
 				"date": "2013-01-16",
-				"count": 71,
-				"total": 6582
+				"count": 0.1,
+				"total": 0.1
 			}, {
 				"date": "2013-01-17",
-				"count": 74,
-				"total": 6820.5
+				"count": 0.2,
+				"total": 0.5
 			}]
 	});
 
