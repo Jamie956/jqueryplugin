@@ -19,9 +19,19 @@
           $(this).text(settings.text);
           $(this).css("color", settings.color);
           settings.complete();
+          $.func1();
         });
       },
     });
+
+    $.extend({
+      func1: function () {
+        console.log('func1');
+      },
+      func2: function () {
+        console.log('func2');
+      },
+    })
   })(jQuery);
 
   $("h3").demo2({
@@ -31,4 +41,7 @@
       alert("Done!");
     }
   });
+
+  // $.func1()
+  // $.func2()
 </script>
