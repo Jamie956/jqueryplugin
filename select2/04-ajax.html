@@ -20,54 +20,50 @@
         dataType: 'json',
         delay: 250,
         cache: true,
-        //定义参数  q:参数名， params.term:输入框的内容
+        //获取输入参数
         data: function (params) {
-          console.log('call data: ', params);
-          // return {
-          //   q: params.term,
-          // };
-
+          console.log('data', params);
           //分页
-          return {
+          var tmp = {
             q: params.term,
             page: params.page
           };
+          console.log(tmp);
+          return tmp;
         },
-        //预处理返回结果  data:返回数据
+        //预处理查询结果
         processResults: function (data, params) {
-          console.log('call processResults: ', data)
-          // return {
-          //   results: data.items
-          // };
-
+          console.log('processResults', data, params)
           //分页
           params.page = params.page || 1;
-          return {
+          var tmp = {
             results: data.items,
             pagination: {
               more: (params.page * 30) < data.total_count
             }
           };
+          console.log(tmp);
+          return tmp;
         },
       },
-      escapeMarkup: function (markup) { return markup; },//字符转义处理
-      minimumInputLength: 1,//最小需要输入多少个字符才进行查询
-      //显示返回结果选项的模板，有数据时repo相当于processResults的return
+      //选项模板
       templateResult: function (repo) {
-        console.log('call templateResult')
+        console.log('templateResult');
         if (repo.full_name) {
           return `* ${repo.full_name}`
         }
         return repo.text;
       },
-      //显示选中的模板
+      //已选模板
       templateSelection: function (repo) {
-        console.log('call templateSelection: ', repo)
+        console.log('templateSelection', repo);
         if (repo.full_name) {
-          return `Your selected: ${repo.full_name}`
+          return `- ${repo.full_name}`
         }
         return repo.text;
-      }
+      },
+      escapeMarkup: function (markup) { return markup; },//字符转义处理
+      minimumInputLength: 1,//执行查询需要的最少字符长度
     });
   })
 </script>
